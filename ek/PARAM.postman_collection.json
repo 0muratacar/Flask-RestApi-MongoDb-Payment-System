@@ -1,0 +1,254 @@
+{
+	"info": {
+		"_postman_id": "6afdea44-f6dc-42da-ac82-d1caf5bef836",
+		"name": "PARAM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16622476"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userNo\": \"7\",\n    \"authCode\": \"auth_code\",\n    \"name\": \"name\",\n    \"surname\": \"surname\",\n    \"birthDate\": \"birth_date\",\n    \"phoneNumber\": \"phone_number\",\n    \"email\": \"email\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:6000/api/users",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Card",
+			"item": [
+				{
+					"name": "Storage Card",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "userNo",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "authCode",
+								"value": "auth_code1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"kk_no\":\"1234567812345674\",\n\"kk_sahibi\":\"murat acar\",\n\"kk_sk_ay\":\"14\",\n\"kk_sk_yil\":\"1999\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/storage-card",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"storage-card"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cards",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "userNo",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "authCode",
+								"value": "auth_code1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/storage-card",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"storage-card"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "Payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "userNo",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "authCode",
+								"value": "auth_code1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"kk_no\":\"1234567812345675\",\n\"islem_tutar\":30,\n\"islem_guvenlik_tip\":\"NS\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/payment",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payments",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "userNo",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "authCode",
+								"value": "auth_code1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/payment",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refund",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "userNo",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "authCode",
+								"value": "auth_code1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"islem_id\":\"GszBTmLUyrrOIeYOOXoS9rU2wQCzLw\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/refund",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"refund"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
