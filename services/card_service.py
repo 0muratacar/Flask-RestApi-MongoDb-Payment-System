@@ -43,4 +43,4 @@ def user_cards(userNo):
         del card['_id']
         card_data.append(card)
   
-    return jsonify(card_data), 200
+    return card_data, 200

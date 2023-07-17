@@ -57,10 +57,10 @@ def verify_user_authentication(user_no, auth_code):
 
 def verify_header(requestHeaders):
     if 'authCode' not in requestHeaders:
-        return jsonify({"error": "authCode is not found in headers."}), 400
+        return {"error": "authCode is not found in headers."}, 400
     
     if 'userNo' not in requestHeaders:
-        return jsonify({"error": "userNo is not found in headers."}), 400
+        return {"error": "userNo is not found in headers."}, 400
     
     authCode = requestHeaders['authCode']
     userNo = requestHeaders['userNo']
@@ -69,4 +69,4 @@ def verify_header(requestHeaders):
     if user:
         return 1
     else:
-        return jsonify({"error": "Unauthorized access."}), 401
+        return {"error": "Unauthorized access."}, 401

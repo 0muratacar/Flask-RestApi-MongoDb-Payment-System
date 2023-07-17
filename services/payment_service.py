@@ -1,10 +1,7 @@
 import os
 from dotenv import load_dotenv
-from flask import jsonify
-
 from pymongo import ASCENDING, MongoClient
 from pymongo.errors import DuplicateKeyError
-
 from services.helper_service import generate_random_string
 from services.user_service import update_user_balance
 
@@ -25,9 +22,9 @@ def pay(paymentData,userNo,ip_address):
 
     card = cardCollection.find_one({"kk_no": payment_dict['kk_no']})
     if card is None:
-        return jsonify({"error": "Card not found."}), 404
+        return {"error": "Card not found."}, 404
     elif payment_dict['islem_tutar']>user['balance']:
-        return jsonify({"error": "Insufficient balance."}), 400
+        return {"error": "Insufficient balance."}, 400
     else:
         newBalance = user['balance']-payment_dict['islem_tutar']
         update_user_balance(user_no=userNo, newBalance=newBalance)
@@ -35,7 +32,7 @@ def pay(paymentData,userNo,ip_address):
         payment_dict['ip_address']=ip_address
         collection.insert_one(payment_dict)
         del payment_dict['_id']
-        return jsonify(payment_dict),200
+        return payment_dict,200
 
 def get_payments(userNo):
     paynetArray = []
@@ -43,7 +40,7 @@ def get_payments(userNo):
     for payment in payments:
         del payment['_id']
         paynetArray.append(payment)
-    return jsonify(paynetArray), 200
+    return paynetArray, 200
 
 def get_refund(userNo,refundData,ip_address):
     user = userCollection.find_one({"userNo": userNo})
@@ -52,11 +49,11 @@ def get_refund(userNo,refundData,ip_address):
     payment = collection.find_one({"islem_id":islemId, "userNo":userNo})
 
     if payment is None:
-        return jsonify({"error": "Payment not found."}), 404
+        return {"error": "Payment not found."}, 404
 
     didRefundBefore = refundCollection.find_one({"islem_id":islemId})
     if didRefundBefore:
-        return jsonify({"error": "Refund already."}), 400
+        return {"error": "Refund already."}, 400
     
     newBalance = user['balance']+payment['islem_tutar']
     update_user_balance(userNo,newBalance)
@@ -65,4 +62,4 @@ def get_refund(userNo,refundData,ip_address):
     refund_dict['ip_address']=ip_address
     refundCollection.insert_one(refund_dict)
     del refund_dict['_id']
-    return jsonify(refund_dict),200
+    return refund_dict,200
