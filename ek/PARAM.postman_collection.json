@@ -24,11 +24,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:6000/api/users",
+							"raw": "localhost:5000/api/users",
 							"host": [
 								"localhost"
 							],
-							"port": "6000",
+							"port": "5000",
 							"path": [
 								"api",
 								"users"
@@ -146,7 +146,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"kk_no\":\"1234567812345675\",\n\"islem_tutar\":30,\n\"islem_guvenlik_tip\":\"NS\"\n}",
+							"raw": "{\n\"kk_no\":\"1234567812345675\",\n\"islem_tutar\":30,\n\"islem_guvenlik_tip\":\"3D\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

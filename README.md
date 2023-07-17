@@ -26,3 +26,7 @@ flask run
 ```
 Uygulama http://localhost:5000 adresinde ayağa kalkar.
 
+
+## API Dökümantasyon
+
+http://localhost:5000/docs
